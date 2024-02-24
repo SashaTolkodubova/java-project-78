@@ -10,7 +10,7 @@ public class NumberSchema extends BaseSchema<Object> {
     public Boolean isValid(Object number) {
         if (required && (number == null)) {
             return false;
-        } else if( number == null) {
+        } else if (number == null) {
             return true;
         }
 
@@ -18,7 +18,7 @@ public class NumberSchema extends BaseSchema<Object> {
         if (positive && (intNumber <= 0)) {
             return false;
         }
-        if (rangeFlag && ((intNumber < minRange ) || (intNumber > maxRange))) {
+        if (rangeFlag && ((intNumber < minRange) || (intNumber > maxRange))) {
             return false;
         }
 
