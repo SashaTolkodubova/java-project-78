@@ -1,9 +1,9 @@
 package hexlet.code.schemas;
 
-public final class StringSchema implements Schema{
+public final class StringSchema extends BaseSchema<String> {
     private Boolean required = false;
-    private  int minLength;
-    private Boolean minLenthFlag = false;
+    private int minLength;
+    private Boolean minLengthFlag = false;
     private String contains;
     private boolean containsFlag = false;
 
@@ -14,7 +14,7 @@ public final class StringSchema implements Schema{
 
     public StringSchema minLength(int length) {
         minLength = length;
-        minLenthFlag = true;
+        minLengthFlag = true;
         return this;
     }
 
@@ -24,18 +24,17 @@ public final class StringSchema implements Schema{
         return this;
     }
 
-    @Override
-    public Boolean isValid(String string) {
-        if (required && ((string == null) || (string.equals("")))) {
+    public Boolean isValid(String object) {
+        if (required && ((object == null) || (object.equals("")))) {
             return false;
         }
-        if ((containsFlag || minLenthFlag) && (string == null)) {
+        if ((containsFlag || minLengthFlag) && (object == null)) {
             return false;
         }
-        if (minLenthFlag && (string.length() <= minLength)) {
+        if (minLengthFlag && (object.length() <= minLength)) {
             return false;
         }
-        if (containsFlag && (!string.contains(contains))) {
+        if (containsFlag && (!object.contains(contains))) {
             return false;
         }
         return true;
