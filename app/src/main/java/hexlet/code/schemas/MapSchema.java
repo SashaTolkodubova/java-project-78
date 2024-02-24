@@ -2,7 +2,7 @@ package hexlet.code.schemas;
 
 import java.util.Map;
 
-public class MapSchema implements BaseSchema<Map<String, String>> {
+public final class MapSchema implements BaseSchema<Map<String, String>> {
     private Boolean required = false;
     private int sizeOf;
     private Boolean sizeOfFlag = false;
