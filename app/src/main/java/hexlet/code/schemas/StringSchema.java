@@ -1,6 +1,6 @@
 package hexlet.code.schemas;
 
-public final class StringSchema extends BaseSchema<String> {
+public final class StringSchema implements BaseSchema<String> {
     private Boolean required = false;
     private int minLength;
     private Boolean minLengthFlag = false;
@@ -24,6 +24,7 @@ public final class StringSchema extends BaseSchema<String> {
         return this;
     }
 
+    @Override
     public Boolean isValid(String object) {
         if (required && ((object == null) || (object.equals("")))) {
             return false;
